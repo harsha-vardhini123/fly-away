@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fly-Away - India's Premier Travel Guide Platform</title>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">✈️ Fly-Away</div>
+        <ul class="nav-menu">
+          <li>
+            <a href="#home" onclick="showPage('home')" class="active">Home</a>
+          </li>
+          <li>
+            <a href="#destinations" onclick="showPage('destinations')"
+              >Destinations</a
+            >
+          </li>
+          <li><a href="#booking" onclick="showPage('booking')">Book Now</a></li>
+          <li><a href="#gallery" onclick="showPage('gallery')">Gallery</a></li>
+          <li>
+            <a href="#feedback" onclick="showPage('feedback')">Feedback</a>
+          </li>
+          <li><a href="#about" onclick="showPage('about')">About</a></li>
+          <li><a href="#contact" onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+      <span class="lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
+      <div class="lightbox-content">
+        <img id="lightbox-img" class="lightbox-img" src="" alt="" />
+      </div>
+      <span class="lightbox-next" onclick="changeImage(1)">&#10095;</span>
+    </div>
+
+    <div id="home" class="page active">
+      <section class="hero">
+        <div class="hero-content">
+          <h1>✈️ Discover Incredible India</h1>
+          <p>Your Dream Journey Starts Here</p>
+          <div>
+            <a
+              href="#booking"
+              onclick="showPage('booking')"
+              class="btn btn-primary"
+              >Book Your Trip Now</a
+            >
+            <a
+              href="#destinations"
+              onclick="showPage('destinations')"
+              class="btn btn-secondary"
+              >Explore Destinations</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="container bg-light">
+        <h2 class="section-title">Why Choose Fly-Away?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <h3>Expert Guides</h3>
+            <p>Certified professionals with 10+ years experience</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3>Best Prices</h3>
+            <p>Competitive rates with no hidden charges</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🚗</div>
+            <h3>Luxury Vehicles</h3>
+            <p>Comfortable AC vehicles for all group sizes</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⭐</div>
+            <h3>5-Star Rated</h3>
+            <p>10,000+ satisfied customers across India</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Safe & Secure</h3>
+            <p>Travel insurance included in all packages</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Custom Tours</h3>
+            <p>Personalized itineraries for your needs</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="destinations" class="page">
+      <div class="container">
+        <h1 class="section-title">🌍 Explore Indian Destinations</h1>
+        <div class="dest-grid">
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&h=250&fit=crop"
+              alt="Goa"
+              class="dest-img"
+              onclick="openLightbox('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=1200&h=800&fit=crop')"
+            />
+            <div class="dest-info">
+              <div class="dest-name">🏖️ Goa</div>
+              <div class="dest-details">
+                📏 Area: 3,702 km² | 🏙️ Capital: Panaji
+              </div>
+              <div class="dest-places">
+                <strong>Top Places:</strong><br />
+                • Baga Beach - Water sports<br />
+                • Fort Aguada - Historic fort<br />
+                • Dudhsagar Falls - Waterfall<br />
+                • Basilica of Bom Jesus - UNESCO site<br />
+                • Anjuna Beach - Nightlife
+              </div>
+              <div class="dest-price">Starting ₹5,999/person</div>
+              <button class="btn btn-primary" onclick="selectAndBook('Goa')">
+                📅 Book Now
+              </button>
+            </div>
+          </div>
+
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&h=250&fit=crop"
+              alt="Kerala"
+              class="dest-img"
+              onclick="openLightbox('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1200&h=800&fit=crop')"
+            />
+            <div class="dest-info">
+              <div class="dest-name">🌴 Kerala</div>
+              <div class="dest-details">
+                📏 Area: 38,852 km² | 🏙️ Capital: Thiruvananthapuram
+              </div>
+              <div class="dest-places">
+                <strong>Top Places:</strong><br />
+                • Alleppey Backwaters - Houseboats<br />
+                • Munnar - Tea plantations<br />
+                • Fort Kochi - Colonial heritage<br />
+                • Kovalam Beach - Pristine shores<br />
+                • Thekkady - Wildlife sanctuary
+              </div>
+              <div class="dest-price">Starting ₹7,999/person</div>
+              <button class="btn btn-primary" onclick="selectAndBook('Kerala')">
+                📅 Book Now
+              </button>
+            </div>
+          </div>
+
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=400&h=250&fit=crop"
+              alt="Rajasthan"
+              class="dest-img"
+              onclick="openLightbox('https://images.unsplash.com/photo-1477587458883-47145ed94245?w=1200&h=800&fit=crop')"
+            />
+            <div class="dest-info">
+              <div class="dest-name">🏰 Rajasthan</div>
+              <div class="dest-details">
+                📏 Area: 342,239 km² | 🏙️ Capital: Jaipur
+              </div>
+              <div class="dest-places">
+                <strong>Top Places:</strong><br />
+                • Jaipur City Palace<br />
+                • Udaipur Lake Palace<br />
+                • Jaisalmer Desert<br />
+                • Amber Fort<br />
+                • Mehrangarh Fort
+              </div>
+              <div class="dest-price">Starting ₹8,999/person</div>
+              <button
+                class="btn btn-primary"
+                onclick="selectAndBook('Rajasthan')"
+              >
+                📅 Book Now
+              </button>
+            </div>
+          </div>
+
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop"
+              alt="Himachal"
+              class="dest-img"
+              onclick="openLightbox('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop')"
+            />
+            <div class="dest-info">
+              <div class="dest-name">🏔️ Himachal Pradesh</div>
+              <div class="dest-details">
+                📏 Area: 55,673 km² | 🏙️ Capital: Shimla
+              </div>
+              <div class="dest-places">
+                <strong>Top Places:</strong><br />
+                • Manali - Adventure capital<br />
+                • Shimla - Queen of hills<br />
+                • Dharamshala - Tibetan culture<br />
+                • Kullu Valley - River rafting<br />
+                • Rohtang Pass - Snow paradise<br />
+                • Solang Valley - Skiing
+              </div>
+              <div class="dest-price">Starting ₹9,499/person</div>
+              <button
+                class="btn btn-primary"
+                onclick="selectAndBook('Himachal Pradesh')"
+              >
+                📅 Book Now
+              </button>
+            </div>
+          </div>
+
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=400&h=250&fit=crop"
+              alt="Uttarakhand"
+              class="dest-img"
+              onclick="openLightbox('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1200&h=800&fit=crop')"
+            />
+            <div class="dest-info">
+              <div class="dest-name">⛰️ Uttarakhand</div>
+              <div class="dest-details">
+                📏 Area: 53,483 km² | 🏙️ Capital: Dehradun
+              </div>
+              <div class="dest-places">
+                <strong>Top Places:</strong><br />
+                • Rishikesh - Yoga capital<br />
+                • Haridwar - Holy ghats<br />
+                • Nainital - Lake district<br />
+                • Mussoorie - Hill station<br />
+                • Jim Corbett - Tiger reserve<br />
+                • Auli - Ski resort
+              </div>
+              <div class="dest-price">Starting ₹8,499/person</div>
+              <button
+                class="btn btn-primary"
+                onclick="selectAndBook('Uttarakhand')"
+              >
+                📅 Book Now
+              </button>
+            </div>
+          </div>
+
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400&h=250&fit=crop"
+              alt="Tamil Nadu"
+              class="dest-img"
+              onclick="openLightbox('https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1200&h=800&fit=crop')"
+            />
+            <div class="dest-info">
+              <div class="dest-name">🛕 Tamil Nadu</div>
+              <div class="dest-details">
+                📏 Area: 130,058 km² | 🏙️ Capital: Chennai
+              </div>
+              <div class="dest-places">
+                <strong>Top Places:</strong><br />
+                • Mahabalipuram - Shore temples<br />
+                • Madurai - Meenakshi Temple<br />
+                • Ooty - Hill station<br />
+                • Rameswaram - Pilgrimage site<br />
+                • Kanyakumari - Southern tip
+              </div>
+              <div class="dest-price">Starting ₹6,999/person</div>
+              <button
+                class="btn btn-primary"
+                onclick="selectAndBook('Tamil Nadu')"
+              >
+                📅 Book Now
+              </button>
+            </div>
+          </div>
+
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&h=250&fit=crop"
+              alt="Karnataka"
+              class="dest-img"
+              onclick="openLightbox('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200&h=800&fit=crop')"
+            />
+            <div class="dest-info">
+              <div class="dest-name">🏛️ Karnataka</div>
+              <div class="dest-details">
+                📏 Area: 191,791 km² | 🏙️ Capital: Bangalore
+              </div>
+              <div class="dest-places">
+                <strong>Top Places:</strong><br />
+                • Mysore Palace<br />
+                • Bangalore Gardens<br />
+                • Coorg Coffee Estates<br />
+                • Hampi Ruins<br />
+                • Gokarna Beach
+              </div>
+              <div class="dest-price">Starting ₹7,499/person</div>
+              <button
+                class="btn btn-primary"
+                onclick="selectAndBook('Karnataka')"
+              >
+                📅 Book Now
+              </button>
+            </div>
+          </div>
+
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=400&h=250&fit=crop"
+              alt="Maharashtra"
+              class="dest-img"
+              onclick="openLightbox('https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=1200&h=800&fit=crop')"
+            />
+            <div class="dest-info">
+              <div class="dest-name">🏙️ Maharashtra</div>
+              <div class="dest-details">
+                📏 Area: 307,713 km² | 🏙️ Capital: Mumbai
+              </div>
+              <div class="dest-places">
+                <strong>Top Places:</strong><br />
+                • Mumbai Gateway of India<br />
+                • Lonavala - Hill station<br />
+                • Ajanta Caves - Ancient art<br />
+                • Ellora Caves - Rock temples<br />
+                • Mahabaleshwar - Scenic views
+              </div>
+              <div class="dest-price">Starting ₹6,499/person</div>
+              <button
+                class="btn btn-primary"
+                onclick="selectAndBook('Maharashtra')"
+              >
+                📅 Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="booking" class="page">
+      <div class="container">
+        <h1 class="section-title">📅 Book Your Dream Trip</h1>
+        <form id="bookingForm" style="max-width: 700px; margin: 0 auto">
+          <div class="form-group">
+            <label>👤 Your Name *</label>
+            <input type="text" id="name" required />
+          </div>
+          <div class="form-group">
+            <label>📧 Email *</label>
+            <input type="email" id="email" required />
+          </div>
+          <div class="form-group">
+            <label>📱 Phone *</label>
+            <input type="tel" id="phone" required />
+          </div>
+          <div class="form-group">
+            <label>🌍 Destination *</label>
+            <select id="destination" required>
+              <option value="">Select destination</option>
+              <option value="Goa">🏖️ Goa</option>
+              <option value="Kerala">🌴 Kerala</option>
+              <option value="Rajasthan">🏰 Rajasthan</option>
+              <option value="Himachal Pradesh">🏔️ Himachal Pradesh</option>
+              <option value="Uttarakhand">⛰️ Uttarakhand</option>
+              <option value="Tamil Nadu">🛕 Tamil Nadu</option>
+              <option value="Karnataka">🏛️ Karnataka</option>
+              <option value="Maharashtra">🏙️ Maharashtra</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>📅 Start Date *</label>
+            <input type="date" id="startDate" required />
+          </div>
+          <div class="form-group">
+            <label>⏱️ Duration (Days) *</label>
+            <input
+              type="number"
+              id="duration"
+              min="1"
+              max="30"
+              value="3"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>👥 Number of People *</label>
+            <input
+              type="number"
+              id="numPeople"
+              min="1"
+              max="50"
+              value="2"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>📦 Package Type *</label>
+            <select id="package" required>
+              <option value="">Select package</option>
+              <option value="Basic">💼 Basic - ₹2,000/day</option>
+              <option value="Standard">⭐ Standard - ₹3,500/day</option>
+              <option value="Premium">👑 Premium - ₹5,000/day</option>
+              <option value="Luxury">💎 Luxury - ₹8,000/day</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>💭 Special Requirements</label>
+            <textarea id="requirements"></textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="width: 100%; padding: 1.2rem; font-size: 1.2rem"
+          >
+            🚀 CONFIRM BOOKING
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="confirmation" class="page">
+      <div class="confirmation">
+        <div class="success-icon">🎉</div>
+        <h2 style="color: #28a745; font-size: 2.5rem; margin: 1rem 0">
+          Booking Confirmed!
+        </h2>
+        <p style="font-size: 1.2rem; color: #666">
+          Thank you for choosing Fly-Away!
+        </p>
+
+        <div class="booking-ref">
+          <strong>🎫 Booking Reference:</strong><br />
+          <span
+            id="bookingRef"
+            style="font-size: 1.5rem; letter-spacing: 2px"
+          ></span>
+        </div>
+
+        <div class="booking-details" id="bookingDetails"></div>
+
+        <div class="action-buttons">
+          <button class="btn btn-primary" onclick="newBooking()">
+            🔄 New Booking
+          </button>
+          <button class="btn btn-primary" onclick="downloadPDF()">
+            📄 Save PDF
+          </button>
+          <button class="btn btn-primary" onclick="downloadText()">
+            💾 Download
+          </button>
+          <button class="btn btn-primary" onclick="window.print()">
+            🖨️ Print
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="gallery" class="page">
+      <div class="container">
+        <h1 class="section-title">📸 Travel Gallery - Click to View</h1>
+        <div class="gallery-grid">
+          <div
+            class="gallery-item"
+            onclick="openLightbox('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1200&h=800&fit=crop', 0)"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&h=300&fit=crop"
+              class="gallery-img"
+              alt="Mountains"
+            />
+            <div class="gallery-overlay">Mountain Adventures</div>
+          </div>
+          <div
+            class="gallery-item"
+            onclick="openLightbox('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=1200&h=800&fit=crop', 1)"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&h=300&fit=crop"
+              class="gallery-img"
+              alt="Beach"
+            />
+            <div class="gallery-overlay">Beach Paradise</div>
+          </div>
+          <div
+            class="gallery-item"
+            onclick="openLightbox('https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1200&h=800&fit=crop', 2)"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400&h=300&fit=crop"
+              class="gallery-img"
+              alt="Temple"
+            />
+            <div class="gallery-overlay">Cultural Heritage</div>
+          </div>
+          <div
+            class="gallery-item"
+            onclick="openLightbox('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop', 3)"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
+              class="gallery-img"
+              alt="Nature"
+            />
+            <div class="gallery-overlay">Nature Trails</div>
+          </div>
+          <div
+            class="gallery-item"
+            onclick="openLightbox('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1200&h=800&fit=crop', 4)"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&h=300&fit=crop"
+              class="gallery-img"
+              alt="Backwaters"
+            />
+            <div class="gallery-overlay">Serene Backwaters</div>
+          </div>
+          <div
+            class="gallery-item"
+            onclick="openLightbox('https://images.unsplash.com/photo-1477587458883-47145ed94245?w=1200&h=800&fit=crop', 5)"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=400&h=300&fit=crop"
+              class="gallery-img"
+              alt="Palace"
+            />
+            <div class="gallery-overlay">Royal Palaces</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEEDBACK PAGE -->
+    <div id="feedback" class="page">
+      <div class="container">
+        <h1 class="section-title">💬 Share Your Experience</h1>
+
+        <form id="feedbackForm" style="max-width: 700px; margin: 0 auto 4rem">
+          <div class="form-group">
+            <label>👤 Your Name *</label>
+            <input type="text" id="feedbackName" required />
+          </div>
+          <div class="form-group">
+            <label>📧 Email *</label>
+            <input type="email" id="feedbackEmail" required />
+          </div>
+          <div class="form-group">
+            <label>⭐ Rate Your Experience *</label>
+            <div class="star-rating" id="starRating">
+              <span class="star" data-rating="1">★</span>
+              <span class="star" data-rating="2">★</span>
+              <span class="star" data-rating="3">★</span>
+              <span class="star" data-rating="4">★</span>
+              <span class="star" data-rating="5">★</span>
+            </div>
+            <input type="hidden" id="rating" required />
+            <p
+              id="ratingText"
+              style="text-align: center; color: #666; font-size: 1.1rem"
+            ></p>
+          </div>
+          <div class="form-group">
+            <label>💭 Your Feedback *</label>
+            <textarea
+              id="feedbackMsg"
+              required
+              placeholder="Tell us about your experience..."
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="width: 100%; padding: 1.2rem; font-size: 1.2rem"
+          >
+            📤 SUBMIT FEEDBACK
+          </button>
+        </form>
+
+        <h2 class="section-title">✨ Recent Reviews</h2>
+        <div class="feedback-cards" id="feedbackCards">
+          <div class="feedback-card">
+            <div class="feedback-header">
+              <span class="feedback-name">Rahul Kumar</span>
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+            </div>
+            <p>
+              "Amazing experience! Our guide was knowledgeable and friendly.
+              Highly recommend Fly-Away!"
+            </p>
+          </div>
+          <div class="feedback-card">
+            <div class="feedback-header">
+              <span class="feedback-name">Priya Sharma</span>
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+            </div>
+            <p>
+              "Best tour service ever! Everything was perfectly organized. Will
+              book again!"
+            </p>
+          </div>
+          <div class="feedback-card">
+            <div class="feedback-header">
+              <span class="feedback-name">Amit Patel</span>
+              <span class="stars">⭐⭐⭐⭐</span>
+            </div>
+            <p>
+              "Great service and professional guides. The trip to Goa was
+              unforgettable!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="about" class="page">
+      <div class="container">
+        <h1 class="section-title">ℹ️ About Fly-Away</h1>
+        <div
+          style="
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+          "
+        >
+          <p style="margin-bottom: 2rem">
+            <strong>Fly-Away</strong> is India's premier tourist guide booking
+            platform, connecting travelers with expert local guides across 8
+            major states and 40+ destinations. Since 2020, we've helped over
+            10,000 travelers explore India's incredible diversity.
+          </p>
+          <p>
+            Our mission is to make travel accessible, affordable, and
+            unforgettable. We carefully select and train all our guides to
+            ensure you get the best experience possible.
+          </p>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 4rem">
+          ❓ Frequently Asked Questions
+        </h2>
+        <div style="max-width: 800px; margin: 0 auto">
+          <div class="testimonial-card">
+            <strong style="font-size: 1.2rem">How do I book a tour?</strong>
+            <p style="margin-top: 1rem">
+              Simply go to "Book Now", fill in your details, select your
+              destination and package, and submit. You'll receive confirmation
+              instantly!
+            </p>
+          </div>
+          <div class="testimonial-card">
+            <strong style="font-size: 1.2rem"
+              >Can I customize my itinerary?</strong
+            >
+            <p style="margin-top: 1rem">
+              Yes! Mention your preferences in the "Special Requirements" field,
+              and our team will create a customized plan for you.
+            </p>
+          </div>
+          <div class="testimonial-card">
+            <strong style="font-size: 1.2rem"
+              >What's included in packages?</strong
+            >
+            <p style="margin-top: 1rem">
+              All packages include a professional guide, vehicle (if selected),
+              entry fees to major attractions, and travel insurance.
+            </p>
+          </div>
+          <div class="testimonial-card">
+            <strong style="font-size: 1.2rem">What if I need to cancel?</strong>
+            <p style="margin-top: 1rem">
+              Free cancellation up to 48 hours before the tour. After that, 50%
+              cancellation fee applies.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact" class="page">
+      <div class="container">
+        <h1 class="section-title">📞 Contact Us</h1>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <h3>Email Us</h3>
+            <p>22761a1266it@gmail.com</p>
+            <p>kalpanag124@gmail.com</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📱</div>
+            <h3>Call Us</h3>
+            <p>+91 7569598341</p>
+            <p>Mon-Sun: 9 AM - 9 PM</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <h3>Visit Us</h3>
+            <p>123 Travel Street</p>
+            <p>Vijayawada, AP, 520001</p>
+          </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 4rem">
+          💬 Send Us a Message
+        </h2>
+        <form id="contactForm" style="max-width: 600px; margin: 0 auto">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" required />
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" required />
+          </div>
+          <div class="form-group">
+            <label>Subject *</label>
+            <input type="text" required />
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea required></textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="width: 100%; padding: 1rem"
+          >
+            📤 SEND MESSAGE
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h3>Fly-Away</h3>
+            <p>India's most trusted travel guide platform since 2020.</p>
+          </div>
+          <div>
+            <h4>Quick Links</h4>
+            <ul style="list-style: none">
+              <li>
+                <a href="#destinations" onclick="showPage('destinations')"
+                  >Destinations</a
+                >
+              </li>
+              <li>
+                <a href="#booking" onclick="showPage('booking')">Book Now</a>
+              </li>
+              <li>
+                <a href="#feedback" onclick="showPage('feedback')">Feedback</a>
+              </li>
+              <li><a href="#about" onclick="showPage('about')">About Us</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <ul style="list-style: none">
+              <li>📧kalpanag124@gmail.com</li>
+              <li>📱 +91 7569598341</li>
+              <li>📍 Mumbai, Maharashtra</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Follow Us</h4>
+            <div style="display: flex; gap: 1rem">
+              <a href="#">Facebook</a>
+              <a href="#">Instagram</a>
+              <a href="#">Twitter</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Fly-Away. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
